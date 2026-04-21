@@ -1,15 +1,12 @@
-# Create Database
 resource "snowflake_database" "test_tf_db" {
   name = "TERRAFORM_TEST_DB"
 }
 
-# Create Schema (RAW)
 resource "snowflake_schema" "raw_schema" {
   database = snowflake_database.test_tf_db.name
   name     = "RAW"
 }
 
-# Create Table (EMPLOYEE)
 resource "snowflake_table" "employee" {
   database = snowflake_database.test_tf_db.name
   schema   = snowflake_schema.raw_schema.name
